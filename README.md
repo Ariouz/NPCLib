@@ -82,12 +82,8 @@ For simplicity i put all my code in one class:
 
         PacketReader pr = new PacketReader(player, npcLib);
         pr.inject();
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                myNpc.teleport(player.getLocation());
-            }
-        }.runTaskLater(this, 40L);
+            
+        myNpc.teleport(player.getLocation());
 
     }
 
