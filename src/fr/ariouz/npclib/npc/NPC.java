@@ -52,9 +52,9 @@ public class NPC extends Reflections {
         w.a(6,(float)20);
         w.a(10,(byte)127);
         setValue(packet, "i", w);
-        if(tabList) addToTabList();
         sendPacket(packet, player);
         teleport(player.getLocation());
+        if(tabList) addToTabList();
     }
 
     public void teleport(Location location){
