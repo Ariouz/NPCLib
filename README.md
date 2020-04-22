@@ -112,3 +112,10 @@ For simplicity i put all my code in one class:
 ### And i got this:
 
 ![Image result](https://raw.githubusercontent.com/Ariouz/NPCLib/master/npc_readme.png)
+
+### Of course you can equip your NPC:
+
+    myNpc.equip(NPCSlot.MAIN_HAND.getID(), new ItemStack(Items.DIAMOND_SWORD));
+   
+![Image result1](https://raw.githubusercontent.com/Ariouz/NPCLib/master/npclib_readme2.png)   
+    
