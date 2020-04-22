@@ -82,9 +82,6 @@ For simplicity i put all my code in one class:
 
         PacketReader pr = new PacketReader(player, npcLib);
         pr.inject();
-            
-        myNpc.teleport(player.getLocation());
-
     }
 
     @EventHandler
