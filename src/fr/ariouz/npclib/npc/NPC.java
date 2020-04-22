@@ -68,14 +68,15 @@ public class NPC extends Reflections {
 
         sendPacket(packet);
         headRotation(location.getYaw(), location.getPitch());
-        this.location = location;
+        this.location = location.clone();
     }
 
-    private void headRotation(float yaw, float pitch){
-        PacketPlayOutEntity.PacketPlayOutEntityLook packet = new PacketPlayOutEntity.PacketPlayOutEntityLook(entityID, getFixRotation(yaw), getFixRotation(pitch), true);
+    private void headRotation(float yaw,float pitch){
+        PacketPlayOutEntity.PacketPlayOutEntityLook packet = new PacketPlayOutEntity.PacketPlayOutEntityLook(entityID, getFixRotation(yaw),getFixRotation(pitch) , true);
         PacketPlayOutEntityHeadRotation packetHead = new PacketPlayOutEntityHeadRotation();
         setValue(packetHead, "a", entityID);
-        setValue(packetHead, "b", getFixLocation(yaw));
+        setValue(packetHead, "b", getFixRotation(yaw));
+
 
         sendPacket(packet);
         sendPacket(packetHead);

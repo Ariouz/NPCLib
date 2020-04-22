@@ -1,10 +1,13 @@
 package fr.ariouz.npclib;
 
+import fr.ariouz.npclib.events.InteractNPCAction;
+import fr.ariouz.npclib.events.PlayerInteractAtNPCEvent;
 import fr.ariouz.npclib.npc.NPC;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
 import net.minecraft.server.v1_8_R3.Packet;
+import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
@@ -51,9 +54,9 @@ public class PacketReader {
             for (NPC npc : npcLib.getNpcs()) {
                 if (npc.getEntityID() == id) {
                     if (getValue(packet, "action").toString().equalsIgnoreCase("ATTACK")) {
-                        player.sendMessage("aie");
+                        Bukkit.getPluginManager().callEvent(new PlayerInteractAtNPCEvent(player, npc, InteractNPCAction.ATTACK){});
                     } else if (getValue(packet, "action").toString().equalsIgnoreCase("INTERACT")) {
-                        player.openInventory(player.getEnderChest());
+                        Bukkit.getPluginManager().callEvent(new PlayerInteractAtNPCEvent(player, npc, InteractNPCAction.INTERACT){});
                     }
                 }
             }
