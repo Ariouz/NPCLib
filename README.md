@@ -2,7 +2,7 @@
 
 ## Create an NPC and use the PlayerInteractAtNPCEvent event
 
-## 1- First you need to shade the library in your source directory.
+### 1- First you need to shade the library in your source directory.
 
 ### 2- Create an instance of NPCLib class:
 
