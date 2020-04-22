@@ -12,7 +12,9 @@ public abstract class PlayerInteractAtNPCEvent extends Event {
     private InteractNPCAction action;
 
     public PlayerInteractAtNPCEvent(Player player, NPC npc, InteractNPCAction action){
-
+        this.player = player;
+        this.npc = npc;
+        this.action = action;
     }
 
     private static final HandlerList handlers = new HandlerList();

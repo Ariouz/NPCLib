@@ -5,8 +5,4 @@ public enum InteractNPCAction {
     ATTACK(),
     INTERACT();
 
-    InteractNPCAction(){
-
-    }
-
 }
