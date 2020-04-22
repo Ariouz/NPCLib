@@ -87,7 +87,7 @@ For simplicity i put all my code in one class:
             public void run() {
                 myNpc.teleport(player.getLocation());
             }
-        }.runTaskLater(this, 20L);
+        }.runTaskLater(this, 40L);
 
     }
 
