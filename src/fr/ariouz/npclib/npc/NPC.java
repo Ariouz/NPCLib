@@ -31,8 +31,8 @@ public class NPC extends Reflections {
     public void equip(NPCSlot slot, ItemStack itemstack){
         PacketPlayOutEntityEquipment packet = new PacketPlayOutEntityEquipment();
         setValue(packet, "a", entityID);
-        setValue(packet, "b", slot.getID());
-        setValue(packet, "c", itemstack);
+        setValue(packet, "b", itemstack);
+        setValue(packet, "c", slot.getID());
 
         sendPacket(packet);
     }
