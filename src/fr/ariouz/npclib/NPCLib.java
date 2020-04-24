@@ -8,13 +8,13 @@ import java.util.ArrayList;
 public class NPCLib {
 
     private ArrayList<NPC> npcs = new ArrayList<>();
-    private Plugin plugin;
+    private static Plugin plugin;
 
     public NPCLib(Plugin plugin){
         this.plugin = plugin;
     }
 
-    public Plugin getPlugin() {
+    public static Plugin getPlugin() {
         return plugin;
     }
 

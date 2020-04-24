@@ -1,11 +1,13 @@
 package fr.ariouz.npclib.npc;
 
 import com.mojang.authlib.GameProfile;
+import fr.ariouz.npclib.NPCLib;
 import fr.ariouz.npclib.Reflections;
 import net.minecraft.server.v1_8_R3.*;
 import org.bukkit.Location;
 import org.bukkit.craftbukkit.v1_8_R3.util.CraftChatMessage;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 import java.util.UUID;
@@ -52,9 +54,16 @@ public class NPC extends Reflections {
         w.a(6,(float)20);
         w.a(10,(byte)127);
         setValue(packet, "i", w);
+        addToTabList();
         sendPacket(packet, player);
         teleport(player.getLocation());
-        if(tabList) addToTabList();
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                if(!tabList) removeFromTabList();
+            }
+        }.runTaskLater(NPCLib.getPlugin(), 20L);
+
     }
 
     public void teleport(Location location){

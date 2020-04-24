@@ -2,6 +2,7 @@ package fr.ariouz.npclib.npc;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import org.bukkit.entity.Player;
 
 public class NPCSkin {
 
@@ -26,6 +27,10 @@ public class NPCSkin {
 
     public void setValue(String value) {
         this.value = value;
+    }
+
+    public void getSkinByPlayer(Player player){
+
     }
 
 }
