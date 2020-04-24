@@ -8,14 +8,14 @@ public enum  NPCSlot {
     CHESTPLATE(3),
     HELMET(4);
 
-    private int ID;
+    private int id;
 
     NPCSlot(int ID){
-        this.ID = ID;
+        this.id = ID;
     }
 
     public int getID() {
-        return ID;
+        return id;
     }
 
 }

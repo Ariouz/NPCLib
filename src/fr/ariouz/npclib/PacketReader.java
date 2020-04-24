@@ -7,6 +7,7 @@ import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageDecoder;
 import net.minecraft.server.v1_8_R3.Packet;
+import net.minecraft.server.v1_8_R3.PacketPlayInUseEntity;
 import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
@@ -46,7 +47,7 @@ public class PacketReader {
 
 
     public void readPacket(Packet<?> packet) {
-        if (packet.getClass().getSimpleName().equalsIgnoreCase("PacketPlayInUseEntity")) {
+        if (packet instanceof PacketPlayInUseEntity) {
             int id = (Integer) getValue(packet, "a");
 
             for (NPC npc : npcLib.getNpcs()) {
