@@ -49,8 +49,6 @@ public class PacketReader {
         if (packet.getClass().getSimpleName().equalsIgnoreCase("PacketPlayInUseEntity")) {
             int id = (Integer) getValue(packet, "a");
 
-            System.out.println(getValue(packet, "action").toString());
-
             for (NPC npc : npcLib.getNpcs()) {
                 if (npc.getEntityID() == id) {
                     if (getValue(packet, "action").toString().equalsIgnoreCase("ATTACK")) {
@@ -71,6 +69,7 @@ public class PacketReader {
             field.setAccessible(true);
             field.set(obj, value);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -80,6 +79,7 @@ public class PacketReader {
             field.setAccessible(true);
             return field.get(obj);
         } catch (Exception e) {
+            e.printStackTrace();
         }
         return null;
     }

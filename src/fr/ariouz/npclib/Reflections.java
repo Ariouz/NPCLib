@@ -14,7 +14,9 @@ public class Reflections {
             Field field = obj.getClass().getDeclaredField(name);
             field.setAccessible(true);
             field.set(obj, value);
-        }catch(Exception e){}
+        }catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     public Object getValue(Object obj,String name){
@@ -22,7 +24,9 @@ public class Reflections {
             Field field = obj.getClass().getDeclaredField(name);
             field.setAccessible(true);
             return field.get(obj);
-        }catch(Exception e){}
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         return null;
     }
 
