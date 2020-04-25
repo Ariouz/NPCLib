@@ -4,14 +4,20 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
+import javafx.scene.control.Skin;
 import net.minecraft.server.v1_8_R3.EntityPlayer;
+import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Scanner;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class NPCSkin {
 
@@ -73,5 +79,47 @@ public class NPCSkin {
         }
 
     }
+
+
+    //********************MINESKIN FETCHER BY JISEB*******************
+
+    /**
+     * @author Jitse Boonstra
+     */
+
+        private final String MINESKIN_API = "https://api.mineskin.org/get/id/";
+        private final ExecutorService EXECUTOR = Executors.newSingleThreadExecutor();
+
+        public void getSkinFromMineskin(int id) {
+            EXECUTOR.execute(() -> {
+                try {
+                    StringBuilder builder = new StringBuilder();
+                    HttpURLConnection httpURLConnection = (HttpURLConnection) new URL(MINESKIN_API + id).openConnection();
+                    httpURLConnection.setRequestMethod("GET");
+                    httpURLConnection.setDoOutput(true);
+                    httpURLConnection.setDoInput(true);
+                    httpURLConnection.connect();
+
+                    Scanner scanner = new Scanner(httpURLConnection.getInputStream());
+                    while (scanner.hasNextLine()) {
+                        builder.append(scanner.nextLine());
+                    }
+
+                    scanner.close();
+                    httpURLConnection.disconnect();
+
+                    JsonObject jsonObject = (JsonObject) new JsonParser().parse(builder.toString());
+                    JsonObject textures = jsonObject.get("data").getAsJsonObject().get("texture").getAsJsonObject();
+                    this.value = textures.get("value").getAsString();
+                    this.signature = textures.get("signature").getAsString();
+
+                } catch (IOException exception) {
+                    Bukkit.getLogger().severe("Could not fetch skin! (Id: " + id + "). Message: " + exception.getMessage());
+                    exception.printStackTrace();
+                }
+            });
+        }
+
+
 
 }
