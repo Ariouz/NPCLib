@@ -1,4 +1,21 @@
-# Ariouz NPCLib - Create easy NPCS without dependencies
+# Ariouz NPCLib 1.0.1 - Create easy NPCS without dependencies
+
+### Last update:
+You can set the value and the signature using the Player object when creating NPC's skin:
+    
+    PCSkin myNpcSkin = new NPCSkin();
+    myNpcSkin.getSkinByPlayer(player);
+        
+    npcManager.spawn(player, myNpc, myNpcSkin, true);
+    
+You can set the value and the signature using the plaer's name even if he's offline:    
+
+    PCSkin myNpcSkin = new NPCSkin();
+    myNpcSkin.getSkinByPlayerName(playerName);
+        
+    npcManager.spawn(player, myNpc, myNpcSkin, true);
+    
+With these 2 methods you can get a skin without set the value and the signature in your code and you can get an offline player's skin.    
 
 ## Create an NPC and use the PlayerInteractAtNPCEvent event
 
