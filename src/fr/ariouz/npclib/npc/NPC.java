@@ -132,4 +132,9 @@ public class NPC extends Reflections {
         return (byte) ((int) (rot * 256.0F / 360.0F));
     }
 
+    public static boolean isNPC(Entity entity){
+        return NPCLib.getNpcs().contains(entity);
+    }
+
+    
 }
