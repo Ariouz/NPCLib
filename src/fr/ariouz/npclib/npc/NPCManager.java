@@ -14,9 +14,11 @@ public class NPCManager {
     }
 
     public void spawn(Player player, NPC npc, NPCSkin npcSkin, boolean tabList) {
+        ArrayList<NPC> tempNpcs = npcLib.getNpcs();
         npcSkin.setSkin(npc.getGameProfile());
         npc.spawn(player, tabList);
-        npcLib.getNpcs().add(npc);
+        tempNpcs.add(npc);
+        npcLib.setNpcs(tempNpcs);
     }
 
     public void destroy(Player player){
