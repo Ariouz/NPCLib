@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class NPCLib {
 
-    private ArrayList<NPC> npcs = new ArrayList<>();
+    private static ArrayList<NPC> npcs = new ArrayList<>();
     private static Plugin plugin;
 
     public NPCLib(Plugin plugin){
@@ -18,7 +18,7 @@ public class NPCLib {
         return plugin;
     }
 
-    public ArrayList<NPC> getNpcs() {
+    public static ArrayList<NPC> getNpcs() {
         return npcs;
     }
 
