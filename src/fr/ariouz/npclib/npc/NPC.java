@@ -56,7 +56,6 @@ public class NPC extends Reflections {
         setValue(packet, "i", w);
         addToTabList();
         sendPacket(packet, player);
-        teleport(player.getLocation());
         new BukkitRunnable() {
             @Override
             public void run() {
