@@ -21,5 +21,9 @@ public class NPCLib {
     public static ArrayList<NPC> getNpcs() {
         return npcs;
     }
+    
+    public static void setNpcs(ArrayList<NPC> npcs) {
+        NPCLib.npcs = npcs;
+    }
 
 }
