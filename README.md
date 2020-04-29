@@ -78,7 +78,7 @@ Then, you need to create the event method:
         Bukkit.broadcastMessage("action: " + action.toString());
     }
 
-And sure, register you event in you onEnable method:
+And sure, register your event in your onEnable method:
 
     Bukkit.getPluginManager().registerEvents(eventClass, plugin);
 
